@@ -2,13 +2,13 @@
 //  RecipeCategoryGridView.swift
 //  Cookcademy
 //
-//  Created by Miguel Angel Gomez Rivero on 24/10/24.
+//  Created by specktro on 24/10/24.
 //
 
 import SwiftUI
 
 struct RecipeCategoryGridView: View {
-    private var recipeData = RecipeData()
+    @StateObject private var recipeData = RecipeData()
     
     var body: some View {
         NavigationView {
@@ -17,7 +17,12 @@ struct RecipeCategoryGridView: View {
                 
                 LazyVGrid(columns: columns) {
                     ForEach(MainInformation.Category.allCases, id: \.self) { category in
-                        CategoryView(category: category)
+                        NavigationLink(destination: {
+                            RecipesListView(category: category)
+                                .environmentObject(recipeData)
+                        }, label: {
+                            CategoryView(category: category)
+                        })
                     }
                 }
                 .navigationTitle("Categories")
