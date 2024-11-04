@@ -45,7 +45,7 @@ struct RecipesListView: View {
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Add") {
-                                recipeData.recipes.append(newRecipe)
+                                recipeData.add(recipe: newRecipe)
                                 isPresenting = false
                             }
                         }
