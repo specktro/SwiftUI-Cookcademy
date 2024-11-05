@@ -27,4 +27,14 @@ final class RecipeData: ObservableObject {
             recipes.append(recipe)
         }
     }
+    
+    func index(of recipe: Recipe) -> Int? {
+        for i in recipes.indices {
+            if recipes[i].id == recipe.id {
+                return i
+            }
+        }
+        
+        return nil
+    }
 }
