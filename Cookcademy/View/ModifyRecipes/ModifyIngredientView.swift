@@ -7,13 +7,18 @@
 
 import SwiftUI
 
-struct ModifyIngredientView: View {
+struct ModifyIngredientView: ModifyComponentView {
     private let listBackgroundColor = AppColor.background
     private let listTextColor = AppColor.foreground
-    
     @Environment(\.presentationMode) private var mode
+    
     @Binding var ingredient: Ingredient
-    let createAction: ((Ingredient) -> Void)
+    let createAction: (Ingredient) -> Void
+    
+    init(component: Binding<Ingredient>, createAction: @escaping (Ingredient) -> Void) {
+        self._ingredient = component
+        self.createAction = createAction
+    }
     
     var body: some View {
         VStack {
@@ -66,7 +71,7 @@ extension NumberFormatter {
 }
 
 #Preview {
-    ModifyIngredientView(ingredient: .constant(Ingredient())) { ingredient in
+    ModifyIngredientView(component: .constant(Ingredient())) { ingredient in
         print(ingredient)
     }
 }
