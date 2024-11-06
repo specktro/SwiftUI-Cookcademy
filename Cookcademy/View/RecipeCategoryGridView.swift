@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeCategoryGridView: View {
-    @StateObject private var recipeData = RecipeData()
+    @EnvironmentObject private var recipeData: RecipeData
     
     var body: some View {
         NavigationView {
@@ -48,4 +48,5 @@ struct CategoryView: View {
 
 #Preview {
     RecipeCategoryGridView()
+        .environmentObject(RecipeData())
 }
