@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ModifyIngredientView: ModifyComponentView {
     @Environment(\.presentationMode) private var mode
-    private let listBackgroundColor = AppColor.background
-    private let listTextColor = AppColor.foreground
+    @AppStorage("listBackgroundColor") private var listBackgroundColor = AppColor.background
+    @AppStorage("listTextColor") private var listTextColor = AppColor.foreground
     
     @Binding var ingredient: Ingredient
     let createAction: ((Ingredient) -> Void)
